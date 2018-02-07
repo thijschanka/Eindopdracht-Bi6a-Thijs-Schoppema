@@ -1,44 +1,29 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.List;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
-import javax.swing.JSeparator;
 import javax.swing.AbstractButton;
-import javax.swing.Box;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.awt.event.ActionEvent;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
@@ -200,7 +185,6 @@ public class VirusGUI extends JFrame implements ActionListener{
 		fileName_textField.setBounds(164, 91, 279, 24);
 		contentPane.add(fileName_textField);
 		fileName_textField.setColumns(10);
-		fileName_textField.setText("C:\\thijs\\blok2\\eindopdracht\\testdata.txt");
 		
 		compare_btn = new JButton("Compare");
 		compare_btn.addActionListener(this);
@@ -403,16 +387,4 @@ public class VirusGUI extends JFrame implements ActionListener{
 		}
 	}
 }
-
-/*
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- */
-
 

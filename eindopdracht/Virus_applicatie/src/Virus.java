@@ -6,7 +6,7 @@ import java.util.Set;
  * @klas BIN-2a
  * @Studentennumeer 580144
  * @Datum 07-02-2018
- * @note windows > linux
+ * @note windows > linux : )
  */
 public class Virus{
 	
