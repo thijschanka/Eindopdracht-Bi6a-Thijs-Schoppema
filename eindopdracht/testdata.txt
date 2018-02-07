@@ -1,0 +1,46 @@
+testl
+1	a	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	ss	x	xx	9	l
+2	b	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	67	y	yy	8	l
+3	b	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	62	z	zz	7	l
+4	d	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	6	l
+2	a	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	10	l
+5	a	Viruses; dsDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	65	x	xx	9	l
+6	b	Viruses; dsDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	67	y	yy	8	l
+7	b	Viruses; dsDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	62	z	zz	7	l
+8	d	Viruses; dsDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	6	l
+6	a	Viruses; dsDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	10	l
+9	a	Viruses; dsRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	65	x	xx	9	l
+10	b	Viruses; dsRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	67	y	yy	8	l
+11	b	Viruses; dsRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	62	z	zz	7	l
+12	d	Viruses; dsRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	6	l
+10	a	Viruses; dsRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	10	l
+13	a	Viruses; ssRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	65	x	xx	9	l
+14	b	Viruses; ssRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	67	y	yy	8	l
+15	b	Viruses; ssRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	62	z	zz	7	l
+16	d	Viruses; ssRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	6	l
+14	a	Viruses; ssRNA viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	10	l
+17	a	Viruses; Retro-transcribing viruses; Nanoviridae; Babuvirus	n	n	n	n	65	x	xx	9	l
+18	b	Viruses; Retro-transcribing viruses; Nanoviridae; Babuvirus	n	n	n	n	67	y	yy	8	l
+19	b	Viruses; Retro-transcribing viruses; Nanoviridae; Babuvirus	n	n	n	n	62	z	zz	7	l
+20	d	Viruses; Retro-transcribing viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	6	l
+18	a	Viruses; Retro-transcribing viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	10	l
+21	a	Viroids; Avsunviroidae; Pelamoviroid	n	n	n	n	65	x	xx	9	l
+22	b	Viroids; Avsunviroidae; Pelamoviroid	n	n	n	n	67	y	yy	8	l
+23	b	Viroids; Avsunviroidae; Pelamoviroid	n	n	n	n	62	z	zz	7	l
+24	d	Viroids; Avsunviroidae; Pelamoviroid	n	n	n	n	64	w	ww	6	l
+22	a	Viroids; Avsunviroidae; Pelamoviroid	n	n	n	n	64	w	ww	10	l
+25	a	Viruses; Satellites; Tolecusatellitidae; Betasatellite	n	n	n	n	65	x	xx	9	l
+26	b	Viruses; Satellites; Tolecusatellitidae; Betasatellite	n	n	n	n	67	y	yy	8	ll
+27	b	Viruses; Satellites; Tolecusatellitidae; Betasatellite	n	n	n	n	62	z	zz	7	l
+28	d	Viruses; Satellites; Tolecusatellitidae; Betasatellite	n	n	n	n	64	w	ww	6	l
+26	a	Viruses; Satellites; Tolecusatellitidae; Betasatellite	n	n	n	n	64	w	ww	10	l
+29	a	Viruses; unclassified virophages	n	n	n	n	65	x	xx	9	l
+30	b	Viruses; unclassified virophages	n	n	n	n	67	y	yy	8	l
+31	b	Viruses; unclassified virophages	n	n	n	n	62	z	zz	7	l
+32	d	Viruses; unclassified virophages	n	n	n	n	64	w	ww	6	l
+30	a	Viruses; unclassified virophages	n	n	n	n	64	w	ww	10	l
+33	a	Viruses; Virus-associated RNAs	n	n	n	n	65	x	xx	9	l
+34	b	Viruses; Virus-associated RNAs	n	n	n	n	67	y	yy	8	l
+35	b	Viruses; Virus-associated RNAs	n	n	n	n	62	z	zz	7	l
+36	d	Viruses; Virus-associated RNAs	n	n	n	n	64	w	ww	6	l
+34	a	Viruses; Virus-associated RNAs	n	n	n	n	64	w	ww	10	l

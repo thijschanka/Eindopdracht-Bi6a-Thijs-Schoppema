@@ -1,0 +1,307 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JSeparator;
+import javax.swing.AbstractButton;
+import javax.swing.Box;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JScrollBar;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.awt.event.ActionEvent;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JTextArea;
+
+public class VirusGUI extends JFrame implements ActionListener{
+	
+	
+
+	private JPanel contentPane;
+	/**
+	 * @wbp.nonvisual location=63,14
+	 */
+	private final JLabel label = DefaultComponentFactory.getInstance().createTitle("New JGoodies title");
+	private JTextField FileName_textField;
+	private JTextField URL_textField;
+	JTextArea host2Text, host1Text, resultText;
+	JComboBox hostID1_comboBox, hostID2_comboBox, viralClass_comboBox;
+	
+	JButton compare_btn, SearchDirectPath_btn, URL_btn, ReadFile_btn;
+	ButtonGroup group;
+	
+	JFileChooser ChooseFile;
+	
+	JRadioButton Id, classificatie, aantalHost;
+	
+	Map<String, ArrayList> map;
+	Map<String, Set<Virus>> map2;
+
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VirusGUI frame = new VirusGUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public VirusGUI() {
+		setTitle("Virus applicatie");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1250, 800);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("File name:");
+		lblNewLabel.setBounds(54, 70, 64, 29);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblViralClassification = new JLabel("Viral classification:");
+		lblViralClassification.setBounds(24, 155, 112, 29);
+		contentPane.add(lblViralClassification);
+		
+		viralClass_comboBox = new JComboBox();
+		viralClass_comboBox.setBounds(164, 157, 244, 25);
+		contentPane.add(viralClass_comboBox);
+		
+		JLabel lblHostId = new JLabel("Host ID:");
+		lblHostId.setBounds(54, 209, 99, 19);
+		contentPane.add(lblHostId);
+		
+		hostID1_comboBox = new JComboBox();
+		hostID1_comboBox.setBounds(164, 208, 244, 25);
+		contentPane.add(hostID1_comboBox);
+		
+		hostID2_comboBox = new JComboBox();
+		hostID2_comboBox.setBounds(488, 208, 244, 25);
+		contentPane.add(hostID2_comboBox);
+		
+		JLabel lblSorteer = new JLabel("Sort options");
+		lblSorteer.setBounds(54, 557, 119, 38);
+		contentPane.add(lblSorteer);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(164, 278, 244, 213);
+		contentPane.add(scrollPane);
+		
+		JScrollBar scrollBar_1 = new JScrollBar();
+		scrollPane.setRowHeaderView(scrollBar_1);
+		
+		JLabel lblVirusesHost = new JLabel("Viruses host 1");
+		scrollPane.setColumnHeaderView(lblVirusesHost);
+		
+		host1Text = new JTextArea();
+		scrollPane.setViewportView(host1Text);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(488, 278, 244, 213);
+		contentPane.add(scrollPane_1);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollPane_1.setRowHeaderView(scrollBar);
+		
+		JLabel lblVirusesHost_1 = new JLabel("Viruses host 2");
+		scrollPane_1.setColumnHeaderView(lblVirusesHost_1);
+		
+		host2Text = new JTextArea();
+		scrollPane_1.setViewportView(host2Text);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(339, 522, 244, 213);
+		contentPane.add(scrollPane_2);
+		
+		JLabel lblSimilarities = new JLabel("Similarities");
+		scrollPane_2.setColumnHeaderView(lblSimilarities);
+		
+		JScrollBar scrollBar_2 = new JScrollBar();
+		scrollPane_2.setRowHeaderView(scrollBar_2);
+		
+		resultText = new JTextArea();
+		scrollPane_2.setViewportView(resultText);
+		
+		JLabel lblUrl = new JLabel("URL:");
+		lblUrl.setBounds(54, 41, 64, 29);
+		contentPane.add(lblUrl);
+		
+		URL_textField = new JTextField();
+		URL_textField.setColumns(10);
+		URL_textField.setBounds(164, 46, 244, 19);
+		contentPane.add(URL_textField);
+		
+		FileName_textField = new JTextField();
+		FileName_textField.setBounds(164, 75, 244, 19);
+		contentPane.add(FileName_textField);
+		FileName_textField.setColumns(10);
+		FileName_textField.setText("C:\\thijs\\blok2\\eindopdracht\\virushostdb.tsv");
+		
+		compare_btn = new JButton("Compare");
+		compare_btn.addActionListener(this);
+		compare_btn.setBounds(485, 159, 247, 25);
+		contentPane.add(compare_btn);
+		
+		SearchDirectPath_btn = new JButton("Search direct path");
+		SearchDirectPath_btn.addActionListener(this);
+		SearchDirectPath_btn.setBounds(510, 59, 178, 21);
+		contentPane.add(SearchDirectPath_btn);
+		
+		URL_btn = new JButton("Use URL");
+		URL_btn.addActionListener(this);
+		URL_btn.setBounds(510, 28, 178, 21);
+		contentPane.add(URL_btn);
+		
+		ReadFile_btn = new JButton("Read file");
+		ReadFile_btn.addActionListener(this);
+		ReadFile_btn.setBounds(510, 90, 178, 21);
+		contentPane.add(ReadFile_btn);
+		group = new ButtonGroup();
+		
+		Id = new JRadioButton("ID");
+		Id.setBounds(54, 622, 119, 21);
+		contentPane.add(Id);
+		group.add(Id);
+		Id.setSelected(true);
+		
+		classificatie = new JRadioButton("Classificatie");
+		classificatie.setBounds(54, 645, 119, 21);
+		contentPane.add(classificatie);
+		group.add(classificatie);
+		
+		aantalHost = new JRadioButton("Aantal hosts");
+		aantalHost.setBounds(54, 599, 119, 21);
+		contentPane.add(aantalHost);
+		group.add(aantalHost);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		if (event.getSource() == compare_btn) {
+			for (Enumeration<AbstractButton> buttons = group.getElements(); buttons.hasMoreElements();) {
+	            AbstractButton button = buttons.nextElement();
+	            if (button.isSelected()) {
+	            	map2 = VirusLogica.krijgVirusen((String) hostID1_comboBox.getSelectedItem(),(String) hostID2_comboBox.getSelectedItem(),(String) viralClass_comboBox.getSelectedItem(), button.getText());
+	            }
+	        }
+			
+			vulVirusBars();
+		} else if (event.getSource() == SearchDirectPath_btn) {
+			searchDirectPath();
+		} else if (event.getSource() == URL_btn) {
+			map = VirusLogica.readFile(0, URL_textField.getText());
+			vulHostBars();
+		} else if (event.getSource() == ReadFile_btn) {
+			map = VirusLogica.readFile(1, FileName_textField.getText());
+			vulHostBars();
+		}
+		
+	}
+	
+	private void vulVirusBars() {
+		 
+		 Set<Virus> host1 = map2.get("ID1");
+		 Set<Virus> host2 = map2.get("ID2");
+		 Set<Virus> intersection = new HashSet<Virus>(host1);
+		 
+		 intersection.retainAll(host2);
+		 
+		 
+		 
+		 ArrayList<Virus> host1Array = new ArrayList<Virus>();
+		 virusArray.addAll(host1);
+		 Collections.sort(host1Array, new IdComparator());
+		 
+		 Object[] host2Array = host2.toArray();
+		 Object[] verschil = intersection.toArray();
+		 String x = "";
+		 Virus b;
+		 
+		 
+		 for(int i = 0;i < host1Array.length; i++) {
+			 b = (Virus) host1Array[i];
+			 x += b.getId() + "\n";
+		 } 
+		 host1Text.setText(x);
+		 x = "";
+		 
+		 for(int i = 0;i < host2Array.length; i++) {
+			 b = (Virus) host2Array[i];
+			 x += b.getId() + "\n";
+		 } 
+		 host2Text.setText(x);
+		 x = "";
+		 
+		 for(int i = 0;i < verschil.length; i++) {
+			 b = (Virus) verschil[i];
+			 x += b.getId() + "\n";
+		 } 
+		 resultText.setText(x);
+		 
+	}
+	
+	private void vulHostBars() {
+		
+		ArrayList<Integer> hostID = map.get("hostIDList");
+		ArrayList<String> hostName = map.get("hostNameList");
+		ArrayList<String> virusInfo = map.get("virusInfo");
+		String x;
+		
+		for(int i = 0; i < hostID.size(); i++) {
+			x = hostID.get(i) + " (" + hostName.get(i)+")";
+			hostID1_comboBox.addItem(x);
+			hostID2_comboBox.addItem(x);
+		}
+		for (int i = 0; i < virusInfo.size(); i++) {
+			viralClass_comboBox.addItem(virusInfo.get(i));
+		}
+	}
+
+	private void searchDirectPath() {
+		File selectedFile;
+	    int reply;
+	    ChooseFile = new JFileChooser();
+	    reply = ChooseFile.showOpenDialog(this);
+	    if (reply == JFileChooser.APPROVE_OPTION) {
+	    	selectedFile = ChooseFile.getSelectedFile();
+	    	FileName_textField.setText(selectedFile.getAbsolutePath());        
+	    }
+		
+	}
+}

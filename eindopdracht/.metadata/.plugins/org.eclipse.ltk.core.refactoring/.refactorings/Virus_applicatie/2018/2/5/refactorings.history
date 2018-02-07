@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;ProcessData&apos; to &apos;VirusSort&apos;&#x0D;&#x0A;- Original project: &apos;Virus_applicatie&apos;&#x0D;&#x0A;- Original element: &apos;ProcessData&apos;&#x0D;&#x0A;- Renamed element: &apos;VirusSort&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ProcessData&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{ProcessData.java[ProcessData" matchStrategy="1" name="VirusSort" qualified="false" references="true" similarDeclarations="false" stamp="1517750487330" textual="false" version="1.0"/>
+</session>

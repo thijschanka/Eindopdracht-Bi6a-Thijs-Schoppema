@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+
+public class ProcessData {
+	static String[] dataList;
+	
+	static void processData(String fileData){
+		dataList = fileData.split("\n");
+		String[] buffer;
+		ArrayList<Virus> virusList = new ArrayList<Virus>();
+		ArrayList<Integer> IDList = new ArrayList<Integer>();
+		
+		System.out.println(dataList[0].toString());
+		for(int i = 1; i < dataList.length; i++) {
+			buffer = dataList[i].split("\t");
+			if (!(IDList.contains(Integer.parseInt(buffer[0])))) {
+				
+			}
+			
+			
+			
+//			virusList.add(new Virus(buffer[0], buffer[1],  buffer[2], buffer[7], buffer[9], buffer[10]));
+		}
+	}
+}

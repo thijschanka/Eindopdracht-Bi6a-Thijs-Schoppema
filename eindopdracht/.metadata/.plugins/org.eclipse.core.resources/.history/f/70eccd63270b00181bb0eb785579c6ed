@@ -1,0 +1,59 @@
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * @author Thijs Schoppema
+ * @klas BIN-2a
+ * @Studentennumeer 580144
+ * @Datum 07-02-2018
+ * @note windows > linux
+ */
+public class Virus{
+	
+	private int id;
+	private String soort;
+	private Set<String> hostList = new HashSet<String>();
+	private String classificatie;
+	private String pmid = null;
+	
+	public String getPmid() {
+		return pmid;
+	}
+	
+	public void setPmid(String pmid) {
+		this.pmid = pmid;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getSoort() {
+		return soort;
+	}
+	
+	public void setSoort(String soort) {
+		this.soort = soort;
+	}
+	
+	public Set<String> getHostList() {
+		return hostList;
+	}
+	
+	public void setHostList(String host) {
+		this.hostList.add(host);
+	}
+	
+	public String getClassificatie() {
+		return classificatie;
+	}
+	
+	public void setClassificatie(String classificatie) {
+		this.classificatie = classificatie;
+	}
+	
+}

@@ -1,0 +1,161 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
+public class VirusLogica {
+	
+	//Variables om het bestand te lezen
+	static BufferedReader inFile;
+	static URL url;
+    static InputStream is = null;
+    
+    //variabelen ter opslag
+    static ArrayList<Virus> virusList;
+    static ArrayList<String> hostNameList;
+    static ArrayList<Integer> hostIDList;
+    
+    //variablen ter vergelijking
+    static Set<Virus> host1;
+	static Set<Virus> host2;
+
+	protected static Map<String, ArrayList> readFile(int a, String b) {
+		
+		try {
+			if (a == 0) {
+				url = new URL(b);
+				is = url.openStream();  // throws an IOException
+		        inFile = new BufferedReader(new InputStreamReader(is));
+			} else inFile = new BufferedReader(new FileReader(b));
+			
+	        String line = inFile.readLine();        
+	        String[] buffer;
+	        
+	        ArrayList<Integer> IDlist = new ArrayList<Integer>();
+	        hostNameList = new ArrayList<String>();
+	        hostIDList = new ArrayList<Integer>();
+ 	        virusList = new ArrayList<Virus>();
+ 	        
+	        while ((line = inFile.readLine()) != null) {
+	            
+	        	buffer = line.replaceAll("(\t)\\1+","$1").split("\t");
+	        	boolean c = true;
+	        	int i = 0;
+	        	
+		        if (!(IDlist.contains(Integer.parseInt(buffer[0])))) {
+		        	
+		        	Virus x = new Virus();
+		        	virusList.add(x);
+		        	
+		        	IDlist.add(Integer.parseInt(buffer[i]));
+		        	
+		        	x.setId((int) Integer.parseInt(buffer[i++]));
+		        	x.setSoort(buffer[i++]);
+		        	x.setClassificatie(buffer[i]);
+
+		        	while(i < buffer.length-1) {
+		        		
+		        		if (c && Character.isDigit(buffer[i].charAt(0))) {
+		        			
+		        			Integer z = Integer.parseInt(buffer[i]);
+		        			x.setHostList(z);
+		        			c = false;
+		        			
+		        			if (!(hostIDList.contains(z))){
+		        				hostIDList.add(z);
+		        				hostNameList.add(buffer[++i]);
+		        			}
+		        			
+		        		} else if (!c && Character.isDigit(buffer[i].charAt(0))) {
+		        			x.setPubmedArticle(buffer[i]);
+		        		}
+		        		i++;
+		        	}
+
+	        	} else {
+	        		Virus x = (Virus) virusList.get(IDlist.indexOf(Integer.parseInt(buffer[0])));
+
+	        		i = 1;
+	        		while(i != buffer.length) {
+	        			if (c && Character.isDigit(buffer[i].charAt(0))) {
+		        			x.setHostList(Integer.parseInt(buffer[i]));
+		        			c = false;
+		        			if (!(hostIDList.contains(Integer.parseInt(buffer[i])))){
+		        				hostIDList.add(Integer.parseInt(buffer[i]));
+		        				hostNameList.add(buffer[++i]);
+		        			}
+	        			}
+	        			i++;
+	        		}
+	        	}	
+	        }
+	        
+	        inFile.close();
+	        if (a == 0) is.close();
+
+	        Map<String, ArrayList> map = new HashMap();
+	        map.put("hostIDList",hostIDList);
+	        map.put("hostNameList",hostNameList);
+	        map.put("virusList", virusList);
+
+	        return map;
+	        
+	    } catch (IOException e) {
+	        JOptionPane.showMessageDialog(null,
+	                "File Error: " + e.toString());
+	    }
+		return null;
+	}
+
+	public static Map<String, Set<Virus>> krijgVirusen(String hostID1, String hostID2, String viralClass) {
+		
+		Integer ID1 = Integer.parseInt(hostID1.split(" \\(")[0]);
+		Integer ID2 = Integer.parseInt(hostID2.split(" \\(")[0]);
+		
+		host1 = new HashSet<Virus>();
+		host2 = new HashSet<Virus>();
+		
+		Virus x;
+		ArrayList<Integer> hosts;
+		String clas;
+		viralClass = viralClass.toLowerCase();
+		
+		for(int i = 0; i < virusList.size(); i++) {
+			x = virusList.get(i);
+			hosts = x.getHostList();
+			clas = x.getClassificatie().toLowerCase();
+			
+			if(viralClass.equals("others") ^ (viralClass.equals("none") || clas.contains(viralClass) ||
+			   viralClass.equals("satellites or virophages") && (clas.contains("virophages") || clas.contains("virophages")))) {
+				if (hosts.contains(ID1)) {
+					host1.add(x);
+				}
+				if(hosts.contains(ID2)) {
+					host2.add(x);
+				}
+		}
+	}
+		
+		Map<String, Set<Virus>> map =new HashMap();
+		map.put("ID1", host1);
+		map.put("ID2", host2);
+		Set<Virus> intersection = new HashSet<Virus>(host1);
+		intersection.retainAll(host2);
+		map.put("Intersectoin", intersection);
+		return map;
+	}
+}
