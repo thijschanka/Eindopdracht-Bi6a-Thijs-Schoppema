@@ -286,7 +286,7 @@ public class VirusGUI extends JFrame implements ActionListener{
 				vulHostBars();
 				
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "Er ontbreekt een virus/host ID in het bestand, dit moet altijd een getal zijn", "Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Het bestand is niet gevonden", "Error",JOptionPane.ERROR_MESSAGE);
 			} catch (NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "Er ontbreekt een virus/host ID in het bestand, dit moet altijd een getal zijn", "Error",JOptionPane.ERROR_MESSAGE);
 			}
@@ -397,7 +397,7 @@ public class VirusGUI extends JFrame implements ActionListener{
 			
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Het opgevraagde ID kan niet worden gevonden.", "Error",JOptionPane.ERROR_MESSAGE);
 		} catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
 			JOptionPane.showMessageDialog(null, "Het opgevraagde ID kan niet worden gevonden.", "Error",JOptionPane.ERROR_MESSAGE);
 		}

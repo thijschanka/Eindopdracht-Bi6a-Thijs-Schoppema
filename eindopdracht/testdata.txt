@@ -1,5 +1,5 @@
 testl
-1	a	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	ss	x	xx	9	l
+1	a	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	61	x	xx	9	l
 2	b	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	67	y	yy	8	l
 3	b	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	62	z	zz	7	l
 4	d	Viruses; ssDNA viruses; Nanoviridae; Babuvirus	n	n	n	n	64	w	ww	6	l
